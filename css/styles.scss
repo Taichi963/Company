@@ -1,0 +1,988 @@
+@import 'modules/variables';
+@import 'mixin';
+.header {
+    height: 80px;
+    background-color: #fff;
+    min-width: 100%;
+    display: flex;
+    white-space: nowrap;
+    box-sizing: border-box;
+    @include pc {
+        display: none;
+    }
+    &-logo {
+        padding: 20px;
+        margin-right: auto;
+        color: #4E5446;
+        font-size: 28px;
+        line-height: 33px;
+        padding-left: 60px;
+        text-decoration: none;
+        @include pc {
+            white-space: nowrap;
+            padding-left: 30px;
+            padding-right: 0;
+        }
+    }
+    &-nav {
+        display: flex;
+        list-style-type: none;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        @include pc {
+            width: auto;
+        }
+    }
+    & .nav-item {
+        padding-left: 60px;
+        font-size: 14px;
+        color: #4E5446;
+        transition: all 0.3s;
+        &:hover {
+            opacity: 0.6;
+            color: rgb(18, 97, 243);
+        }
+    }
+    & .nav-btn {
+        overflow: hidden;
+        background: #000;
+        margin-left: 60px;
+        width: 223px;
+        color: white;
+        text-align: center;
+        white-space: nowrap;
+        transition: all 0.3s;
+        position: relative;
+        & .btn-black {
+            span {
+                position: relative;
+            }
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                content: '';
+                transition: all .5s ease-in-out;
+                transform: translateX(0%);
+                background-color: #02A270;
+            }
+            &:hover {
+                &::before {
+                    transform: translateX(100%);
+                }
+            }
+        }
+        & .nav-item {
+            color: white;
+            display: inline-block;
+            padding: 28px 60px;
+        }
+    }
+}
+
+.mobile-wrapper {
+    display: none;
+    @include pc {
+        display: block;
+    }
+}
+
+
+/*========= モバイルメニュー ===============*/
+
+#g-nav {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    /*動き*/
+    transition: all 0.6s;
+    ul {
+        /*ナビゲーション天地中央揃え*/
+        @include center;
+        z-index: 999;
+        li {
+            text-align: center;
+            padding: 20px 0;
+            a {
+                color: #333;
+                text-decoration: none;
+                padding: 10px;
+                display: block;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                font-weight: bold;
+                transition: all 0.6s;
+                font-size: 30px;
+                @include tab {
+                    font-size: 25px;
+                }
+                @include sp {
+                    font-size: 18px;
+                }
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+    &.panelactive {
+        left: 0;
+        #g-nav-list {
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            height: 100vh;
+            /*表示する高さ*/
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+}
+
+
+/*========= ボタンのためのCSS ===============*/
+
+.openbtn1 {
+    position: fixed;
+    z-index: 9999;
+    /*ボタンを最前面に*/
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    span {
+        display: inline-block;
+        transition: all .4s;
+        position: absolute;
+        left: 14px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #666;
+        width: 45%;
+        &:nth-of-type(1) {
+            top: 15px;
+        }
+        &:nth-of-type(2) {
+            top: 23px;
+        }
+        &:nth-of-type(3) {
+            top: 31px;
+        }
+        .active {
+            span {
+                &:nth-of-type(1) {
+                    top: 18px;
+                    left: 18px;
+                    transform: translateY(6px) rotate(-45deg);
+                    width: 30%;
+                }
+                &:nth-of-type(2) {
+                    opacity: 1;
+                }
+                &:nth-of-type(3) {
+                    top: 30px;
+                    left: 18px;
+                    transform: translateY(-6px) rotate(45deg);
+                    width: 30%;
+                }
+            }
+        }
+    }
+    &.active span:nth-of-type(3) {
+        top: 30px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+    }
+}
+
+// /*========= mobile btn ===============*/
+.openbtn1 {
+    position: fixed;
+    z-index: 9999;
+    /*ボタンを最前面に*/
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+
+/*×に変化*/
+
+.openbtn1 span {
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #666;
+    width: 45%;
+}
+
+.openbtn1 span:nth-of-type(1) {
+    top: 15px;
+}
+
+.openbtn1 span:nth-of-type(2) {
+    top: 23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+    top: 31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+    opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3) {
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+
+/*========= モバイルメニュー ===============*/
+
+// ============== header END =================
+.top {
+    height: 720px;
+    color: $cWhite;
+    position: relative;
+    background-size: cover;
+    letter-spacing: 0.12em !important;
+    background-image: url(../img/Rectangle2.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    &::after {
+        content: '';
+        background-color: $cImgShadow;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+    &-texts {
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        text-align: center;
+    }
+    &-heading {
+        width: 100%;
+        margin-bottom: 25px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 56px;
+        text-align: center;
+        letter-spacing: 0.12em;
+        @include tab {
+            font-size: 2rem;
+            white-space: normal;
+        }
+    }
+    &-text {
+        font-size: 24px;
+        color: $cWhite;
+    }
+}
+
+//  -----------  techno start -------------
+.techno {
+    padding: 120px 0 153px;
+    position: relative;
+    &-item {
+        width: 90%;
+        margin-right: 0;
+        margin-left: auto;
+        @include tab {
+            width: 100%;
+        }
+    }
+    & img {
+        height: 459px;
+        z-index: -1;
+        width: 72%;
+        object-fit: cover;
+        position: absolute;
+        top: 120px;
+        right: 0;
+        @include tab {
+            width: 100%;
+            position: static;
+        }
+        @include sp {
+            width: 100%;
+            height: 280px;
+        }
+    }
+    &-content {
+        width: 396px;
+        z-index: 3;
+        margin-left: 93px;
+        @include pc {
+            margin-left: 0;
+        }
+        @include tab {
+            margin: 0 auto;
+            width: 85%;
+        }
+    }
+    &-title {
+        padding: 100px 0 30px;
+        @include tab {
+            padding-top: 20px;
+        }
+        @include sp {
+            text-align: center;
+        }
+    }
+    &-texts {
+        font-size: 16px;
+        line-height: 28.8px;
+        letter-spacing: 8%;
+        padding-bottom: 60px;
+        font-family: YuGothic;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 29px;
+        letter-spacing: 0.08em;
+        @include tab {
+            margin-bottom: 30px;
+        }
+        @include sp {
+            font-size: 60px;
+            margin: 40px;
+            padding-bottom: 0;
+        }
+    }
+    &-btn {
+        margin: 0 auto;
+        position: absolute;
+        bottom: 16.5%;
+        @include pc {
+            margin-top: 0px;
+        }
+        @include tab {
+            position: static;
+        }
+    }
+}
+
+
+/*  -----------  techno end -------------*/
+
+
+/* ------------ strengths start ------------------ */
+
+.strengths {
+    position: relative;
+    margin-bottom: 86px;
+    &-bg {
+        position: absolute;
+        top: 2.5%;
+        left: 0;
+        background-color: #F0F1F1;
+        width: 75%;
+        height: 100%;
+        z-index: -1;
+        @include tab {
+            width: 100%;
+            top: 1%;
+        }
+        @include sp {
+            top: 22px;
+        }
+    }
+    &-title {
+        @include tab {
+            text-align: center;
+            padding-bottom: 0;
+        }
+        @include sp {
+            padding-bottom: 30px;
+        }
+    }
+    &-items {
+        display: flex;
+        padding-top: 80px;
+        @include tab {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        @include sp {
+            padding-top: 0;
+        }
+    }
+    &-left {
+        width: 50%;
+        @include tab {
+            margin: 0 auto;
+            padding-bottom: 50px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        @include tab {
+            .strengths-heading {
+                width: 400px;
+                margin: 0 auto;
+                margin-bottom: 40px;
+            }
+        }
+        @include sp {
+            .strengths-heading {
+                width: 200px;
+            }
+        }
+    }
+    &-heading {
+        margin-bottom: 40px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 24px;
+        letter-spacing: 8%;
+        border-bottom: 1px solid $cGreen;
+        display: inline-block;
+        order: 2;
+        padding-bottom: 5px;
+        @include tab {
+            padding: 20px 0 10px;
+        }
+        @include pc {
+            font-size: 20px;
+        }
+    }
+    &-right {
+        width: 100%;
+        @include tab {
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+    &-item {
+        display: flex;
+        justify-content: center;
+        &:nth-child(1) {
+            margin-bottom: 32px;
+        }
+        @include tab {
+            width: 85%;
+        }
+        & img {
+            height: 100%;
+            width: 38%;
+            @include tab {
+                width: 100%;
+            }
+        }
+        @include tab {
+            margin: 0 auto;
+            padding-bottom: 50px;
+            width: 80%;
+            flex-direction: column;
+        }
+    }
+    &-texts {
+        padding-left: 48px;
+        width: 47%;
+        @include tab {
+            width: 100%;
+            padding-left: 0;
+        }
+    }
+    &-text {
+        padding-bottom: 43px;
+        @include pc {
+            padding-bottom: 10px;
+            font-size: 13px;
+        }
+        @include sp {
+            font-size: 14px;
+        }
+    }
+    &-btn {
+        margin: 35px auto;
+        @include tab {
+            margin: 20px auto;
+        }
+    }
+    &-img {
+        order: 3;
+        img {
+            max-width: 100%;
+            @include tab {
+                width: 74%;
+            }
+        }
+    }
+}
+
+
+/* ------------ strengths end ------------------ */
+
+
+/* ------------ about start -------------------------- */
+
+.about {
+    margin: 80px auto 140px;
+    @include tab {
+        text-align: center;
+    }
+    @include sp {
+        // margin-bottom: 50px;
+    }
+    & .sub-title {
+        font-size: 18px;
+    }
+    &-items {
+        display: flex;
+        width: 100%;
+        @include tab {
+            flex-direction: column;
+        }
+    }
+    &-item {
+        width: 100%;
+        overflow: hidden;
+    }
+    &-img {
+        background-image: url(../img/Rectangle11.png);
+        height: 360px;
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+        transition: all 0.6s;
+        &:hover {
+            transform: scale(1.2, 1.2);
+            .about-heading,
+            .about-text {
+                opacity: 0;
+            }
+            &::after {
+                opacity: 0.3;
+            }
+        }
+        &::after {
+            content: '';
+            background-color: $cImgShadow;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    }
+    &-heading {
+        font-weight: bold;
+        font-size: 40px;
+        letter-spacing: 0.08em;
+        color: $cWhite;
+    }
+    &-text {
+        font-size: 24px;
+        line-height: 36px;
+        color: $cWhite;
+    }
+    &-texts {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        text-align: center;
+    }
+    &-heading {
+        font-weight: bold;
+        font-size: 40px;
+        color: $cWhite;
+        line-height: 1;
+        &::after {
+            content: '';
+            background: $cGreen;
+            display: block;
+            height: 1px;
+            width: 40px;
+            margin: 0 auto;
+        }
+    }
+    &-text {
+        font-size: 24px;
+        color: $cWhite;
+    }
+}
+
+#about-img {
+    background-image: url(../img/Rectangle12.png);
+}
+
+
+/* ------------ about end -------------------------- */
+
+
+/* ------------ news start ---------------------------- */
+
+.news {
+    &-texts {
+        text-align: center;
+    }
+    &-title {
+        padding-bottom: 10px;
+    }
+    &-items {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        @include sp {
+            width: auto;
+            flex-direction: column;
+        }
+    }
+    &-item {
+        padding-bottom: 18px;
+        &:last-child {
+            padding-bottom: 0;
+        }
+        img {
+            width: 100%;
+        }
+    }
+    &-heading {
+        text-align: center;
+        font-size: 16px;
+    }
+    &-btn {
+        margin: 65px auto 120px;
+        @include sp {
+            margin: 20px auto 100px;
+        }
+    }
+}
+
+
+/* ------------ news enzd ---------------------------- */
+
+
+/* ------------ contact start ----------------------- */
+
+.contact {
+    background-image: url(../img/Rectangle19.png);
+    background-position: center center;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 120px;
+    position: relative;
+    &::before {
+        content: '';
+        background-color: $cImgShadow;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+    &-items {
+        align-items: center;
+        display: flex;
+        width: 100%;
+        padding: 75px 140px;
+        @include pc {
+            padding: 75px 10px;
+        }
+        @include tab {
+            flex-direction: column;
+            padding: 30px;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+    &-title {
+        color: $cWhite;
+        padding-bottom: 15px;
+        @include tab {
+            text-align: center;
+            padding-top: 20px;
+        }
+    }
+    &-left {
+        z-index: 2;
+        width: 50%;
+        @include tab {
+            width: 100%;
+        }
+    }
+    &-texts {
+        color: $cWhite;
+        width: 72%;
+        @include tab {
+            margin: 0 auto;
+            font-size: 20px;
+            width: 72%;
+            padding: 20px 0;
+        }
+        @include sp {
+            width: 100%;
+            font-size: 15px;
+        }
+    }
+    & #right-item {
+        padding: 0 0 30px 50px;
+        @include sp {
+            padding: 0 0 10px;
+        }
+    }
+    & .right-items {
+        position: relative;
+        z-index: 2;
+        @include pc {
+            padding-left: 0;
+        }
+    }
+    & .info {
+        a {
+            color: white;
+            padding-left: 53px;
+            position: relative;
+            &::before {
+                content: "";
+                background-image: url(../img/Vector.png);
+                width: 37.5px;
+                height: 37.5px;
+                background-repeat: no-repeat;
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+    &-btn {
+        width: 100%;
+        max-width: 414px;
+        height: 70px;
+        border: none !important;
+        position: relative;
+        transition: all 0.3s;
+        a {
+            padding-top: 20px;
+            font-size: 24px;
+            &::before {
+                content: "";
+                display: inline-block;
+                border: 1.6px solid #fff;
+                height: 26.67px;
+                width: 36px;
+                position: absolute;
+                top: 21px;
+                left: 27px;
+                @include sp {
+                    position: absolute;
+                    top: 20px;
+                    left: 10px;
+                }
+            }
+        }
+        &:hover {
+            opacity: 0.8;
+            border-radius: 100px;
+        }
+    }
+    &-img {
+        position: absolute;
+        top: 22px;
+        left: 27px;
+        @include sp {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+    }
+}
+
+
+/* ------------ contact end----------------------- */
+
+
+/* ------------ access start ---------------------------- */
+
+.access {
+    background-color: $cBgGray;
+    @include sp {
+        padding: 0;
+    }
+    &-items {
+        display: flex;
+        justify-content: space-around;
+        padding: 80px 0;
+        @include tab {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+            padding: 80px 0;
+        }
+        @include sp {
+            padding: 0;
+        }
+    }
+    &-map {
+        width: 36%;
+        position: relative;
+        @include tab {
+            position: static;
+            width: 100%;
+            height: 100%;
+            padding-right: auto;
+        }
+        iframe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            @include tab {
+                position: static;
+                width: 100%;
+                height: 400px;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    &-item {
+        color: $cWhite;
+        @include tab {
+            max-width: 60%;
+            margin: 0 auto;
+        }
+        @include sp {
+            max-width: 80%;
+            padding: 20px 0;
+        }
+    }
+    &-title {
+        padding: 10px 0 30px;
+        color: $cWhite;
+        @include tab {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+    }
+    .location {
+        &-items {
+            font-family: YuGothic;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            padding-right: 160px;
+            @include tab {
+                padding-right: 0;
+                text-align: center;
+            }
+            dt {
+                float: left;
+            }
+            dd {
+                margin-left: 80px;
+                margin-bottom: 20px;
+                padding-left: 30px;
+            }
+        }
+    }
+}
+
+
+/* ------------ access end ---------------------------- */
+
+
+/* ------------ footer start --------------------------- */
+
+.footer {
+    color: $cBgGray;
+    align-items: center;
+    &-title {
+        font-size: 34px;
+        line-height: 40px;
+    }
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        padding: 60px 0 10px;
+        @include sp {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+    &-nav {
+        width: 60%;
+        margin: 0 auto 10px;
+        @include sp {
+            width: 100%;
+        }
+    }
+    &-items {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 80%;
+        @include sp {
+            max-width: auto;
+            display: inline;
+            text-align: center;
+        }
+    }
+    &-item {
+        padding-bottom: 20px;
+        margin-right: 50px;
+        @include sp {
+            margin-right: 0;
+        }
+        a {
+            font-family: YuGothic;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 21px;
+            text-decoration: none;
+            color: $cBgGray;
+            transition: all 0.8s;
+            &:hover {
+                opacity: 0.7;
+                color: $cBlue;
+            }
+        }
+    }
+}
+
+
+/* ------------ footer end --------------------------- */

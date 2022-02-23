@@ -1,0 +1,90 @@
+@import '../mixin';
+$cWhite: white;
+$cBlack: black;
+$cImgShadow: rgba(0, 0, 0, .5);
+$cBgGray: #4E5446;
+$cGreen: #02A270;
+$cBlue: rgb(18, 97, 243);
+html {
+    font-size: 100%;
+    font-family: '游ゴシック', 'Roboto', sans-serif;
+    letter-spacing: 0.08em !important;
+}
+body {
+    color: $cBgGray;
+    font-size: 0.875rem;
+    line-height: 24px;
+}
+p {
+    color: $cBgGray;
+    font-family: YuGothic;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    @include pc {
+        font-size: 13px;
+    }
+    line-height: 29px;
+}
+a {
+    color: $cBlack;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+}
+li {
+    list-style: none !important;
+}
+/* ========== デフォルト ================ */
+
+/* ========== 共通パーツ ================ */
+.section-title {
+    font-size: 40px;
+    line-height: 46.88px;
+    font-family: '游ゴシック', 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 47px;
+    /* identical to box height */
+    letter-spacing: 0.08em;
+    color: $cBgGray;
+}
+.section-btn {
+    background-color: $cGreen;
+    display: block;
+    text-align: center;
+    width: 259px;
+    height: 53px;
+    border: 1px solid $cWhite;
+    box-sizing: border-box;
+    transition: all 0.5s;
+    box-shadow: 10px 10px rgba(0, 0, 0, 10);
+    transition: all 0.9s;
+}
+.section-btn:hover {
+    background-color: $cBlue;
+    box-shadow: none;
+}
+.section-btn a {
+    color: #fff;
+    display: block;
+    padding-top: 15px;
+}
+.content-width {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include pc {
+        width: 90%;
+    }
+
+    @include tab {
+        width: 100%;
+    }
+}
+/* ========== 共通パーツ ================ */
